@@ -3,7 +3,7 @@
 @section('content')
 <div class="mb-6">
     <a href="{{ route('ingredients.index') }}" class="text-sm font-medium text-slate-500 hover:text-slate-700 flex items-center gap-1 w-fit transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <i class="mdi mdi-arrow-left text-lg"></i>
         Kembali ke Daftar Bahan Baku
     </a>
 </div>
@@ -36,11 +36,11 @@
                         <option value="slice" {{ old('unit') == 'slice' ? 'selected' : '' }}>Lbr</option>
                     </select>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <i class="mdi mdi-chevron-down"></i>
                     </div>
                 </div>
                 <p class="mt-2 text-sm text-slate-500 flex items-start gap-1.5">
-                    <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <i class="mdi mdi-information-outline text-lg mt-0.5 flex-shrink-0 text-slate-400"></i>
                     <span><strong>Tips:</strong> Gunakan satuan paling kecil agar perhitungan resep lebih fleksibel (contoh: gunakan 'gram' bukan 'kg').</span>
                 </p>
                 @error('unit')
