@@ -8,7 +8,7 @@
     </div>
     <div>
         <a href="{{ route('menus.create') }}" class="inline-flex items-center justify-center rounded-lg bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-orange-600 active:scale-95 active:shadow-inner focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 transition-all duration-150 w-full sm:w-auto">
-            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            <i class="mdi mdi-plus text-lg mr-1"></i>
             Tambah Menu Baru
         </a>
     </div>
@@ -48,7 +48,7 @@
                     <td class="px-6 py-4 text-right">
                         <div class="flex items-center justify-end gap-3">
                             <a href="{{ route('menus.show', $menu) }}" class="text-indigo-600 hover:text-indigo-800 font-medium transition flex items-center gap-1" title="Kelola Resep">
-                                <svg class="w-4 h-4 text-inherit" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                <i class="mdi mdi-clipboard-check text-lg text-inherit"></i>
                                 Resep
                             </a>
                             <a href="{{ route('menus.edit', $menu) }}" class="text-blue-600 hover:text-blue-800 font-medium transition">
@@ -68,7 +68,7 @@
                 <tr>
                     <td colspan="6" class="px-6 py-12 text-center text-slate-500">
                         <div class="flex flex-col items-center justify-center gap-2">
-                            <svg class="w-10 h-10 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            <i class="mdi mdi-book-open-page-variant text-4xl text-slate-300"></i>
                             <p class="text-lg font-medium text-slate-600">Belum ada data menu.</p>
                             <p class="text-sm">Silakan tambah menu baru terlebih dahulu.</p>
                         </div>
