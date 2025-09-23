@@ -4,7 +4,7 @@
 <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
     <div>
         <a href="{{ route('menus.index') }}" class="inline-flex items-center justify-center rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition mb-3 w-fit gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <i class="mdi mdi-arrow-left text-lg"></i>
             Kembali ke Daftar Menu
         </a>
         <h1 class="text-2xl font-bold text-slate-800 flex items-center gap-3">
@@ -19,7 +19,7 @@
     </div>
     <div>
         <a href="{{ route('menus.edit', $menu) }}" class="inline-flex items-center justify-center rounded-lg bg-white border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition w-full sm:w-auto">
-            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+            <i class="mdi mdi-pencil text-lg mr-1"></i>
             Edit Informasi Menu
         </a>
     </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <button type="button" id="addIngredientBtn" class="mt-4 w-full py-2 border border-dashed border-slate-300 rounded-lg text-sm font-medium text-slate-600 hover:text-primary hover:border-primary hover:bg-orange-50 transition flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    <i class="mdi mdi-plus text-lg"></i>
                     Tambah Bahan Baku
                 </button>
 
@@ -60,7 +60,7 @@
         <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
             <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                    <i class="mdi mdi-clipboard-check text-xl text-indigo-500"></i>
                     Komposisi Resep (Saat Ini)
                 </h2>
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -71,7 +71,7 @@
             <div class="p-0">
                 @if($menu->ingredients->isEmpty())
                     <div class="p-12 text-center text-slate-500 flex flex-col items-center justify-center gap-2">
-                        <svg class="w-12 h-12 text-slate-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <i class="mdi mdi-package-variant-closed text-5xl text-slate-200"></i>
                         <p class="text-lg font-medium text-slate-600">Belum ada resep yang di-setup.</p>
                         <p class="text-sm">Silakan tambah bahan baku melalui form di samping lalu simpan.</p>
                     </div>
@@ -129,7 +129,7 @@
                 </div>
             </div>
             <button type="button" onclick="this.parentElement.remove()" class="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded transition self-start" title="Hapus baris ini">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <i class="mdi mdi-close text-lg"></i>
             </button>
         `;
         
