@@ -1,12 +1,13 @@
 <?php
 
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\CalculatorLogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IngredientController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\SaleController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,12 @@ Route::middleware(['auth', 'approved'])->group(function () {
     // Quick Calculator
     Route::get('calculator', [CalculatorController::class, 'index'])->name('calculator.index');
 
+    // Rekap Kalkulator (Simpan & Lihat)
+    Route::get('calculator-logs', [CalculatorLogController::class, 'index'])->name('calculator-logs.index');
+    Route::post('calculator-logs', [CalculatorLogController::class, 'store'])->name('calculator-logs.store');
+    Route::get('calculator-logs/{calculator_log}', [CalculatorLogController::class, 'show'])->name('calculator-logs.show');
+    Route::delete('calculator-logs/{calculator_log}', [CalculatorLogController::class, 'destroy'])->name('calculator-logs.destroy');
+
     // Master Data: Menus
     Route::resource('menus', MenuController::class);
     Route::post('menus/{menu}/recipe', [MenuController::class, 'updateRecipe'])->name('menus.recipe.update');
@@ -48,8 +55,10 @@ Route::middleware(['auth', 'approved'])->group(function () {
     // Master Data: Ingredients
     Route::resource('ingredients', IngredientController::class)->except(['show']);
 
-    // Penjualan
-    Route::resource('sales', SaleController::class);
+    // Catatan Tim
+    Route::get('notes', [NoteController::class, 'index'])->name('notes.index');
+    Route::post('notes', [NoteController::class, 'store'])->name('notes.store');
+    Route::delete('notes/{note}', [NoteController::class, 'destroy'])->name('notes.destroy');
 
     // Laporan Kalkulasi
     Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
