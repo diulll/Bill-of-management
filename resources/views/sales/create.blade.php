@@ -3,7 +3,7 @@
 @section('content')
 <div class="mb-6">
     <a href="{{ route('sales.index') }}" class="text-sm font-medium text-slate-500 hover:text-slate-700 flex items-center gap-1 w-fit transition">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        <i class="mdi mdi-arrow-left text-lg"></i>
         Kembali ke Daftar Penjualan
     </a>
 </div>
@@ -11,7 +11,7 @@
 <div class="max-w-4xl bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
     <div class="px-6 py-4 border-b border-slate-200 bg-slate-50">
         <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
-            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+            <i class="mdi mdi-plus-circle text-xl text-emerald-500"></i>
              Catat Penjualan Baru
         </h2>
     </div>
