@@ -34,7 +34,7 @@ class SaleController extends Controller
             'notes'              => 'nullable|string|max:500',
             'items'              => 'required|array|min:1',
             'items.*.menu_id'    => 'required|exists:menus,id',
-            'items.*.quantity'   => 'required|integer|min:1',
+            'items.*.quantity'   => 'required|integer|min:0',
         ]);
 
         // Filter item yang quantity-nya > 0
