@@ -171,8 +171,10 @@
     }
 
     function resetCalculator() {
-        document.querySelectorAll('input[id^="qty_"]').forEach(input => input.value = 0);
-        calculateIngredients();
+        if(confirm('Mau reset?? Yakin?')) {
+            document.querySelectorAll('input[id^="qty_"]').forEach(input => input.value = 0);
+            calculateIngredients();
+        }
     }
 
     function filterMenus() {

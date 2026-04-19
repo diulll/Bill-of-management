@@ -149,7 +149,7 @@
                         <div class="flex flex-col items-center justify-center gap-2">
                             <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path></svg>
                             <p>Belum ada transaksi penjualan.</p>
-                            <a href="{{ route('sales.create') }}" class="mt-2 inline-flex items-center gap-1 text-sm text-primary font-medium hover:text-primary-dark">Input Penjualan Baru →</a>
+                            <a href="{{ route('sales.create') }}" class="mt-4 inline-flex items-center justify-center rounded-lg border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition gap-2">Input Penjualan Baru &rarr;</a>
                         </div>
                     </td>
                 </tr>

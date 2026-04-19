@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
     <title>BOM System</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,7 +27,7 @@
                 <div class="flex">
                     <div class="flex-shrink-0 flex items-center">
                         <a href="{{ route('dashboard') }}" class="font-bold text-xl text-primary tracking-tight flex items-center gap-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                            <span class="w-8 h-8 rounded-lg flex items-center justify-center text-white font-bold text-lg" style="background: linear-gradient(135deg, #667eea, #764ba2);">b</span>
                             BOM System
                         </a>
                     </div>
@@ -50,6 +52,38 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- User Dropdown (Desktop) -->
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    @auth
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" class="inline-flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-600 bg-slate-50 rounded-lg hover:bg-slate-100 hover:text-slate-800 transition duration-150 focus:outline-none focus:ring-2 focus:ring-primary/30">
+                            <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            {{ Auth::user()->name }}
+                            <svg class="w-4 h-4 text-slate-400 transition-transform" :class="{ 'rotate-180': open }" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+
+                        <div x-show="open" @click.away="open = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-50" style="display: none;">
+                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition">
+                                Profil Saya
+                            </a>
+                            @if(auth()->user()->isAdmin())
+                            <a href="{{ route('users.index') }}" class="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition">
+                                Kelola User
+                            </a>
+                            @endif
+                            <div class="border-t border-slate-100"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="w-full text-left block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    @endauth
+                </div>
+
                 <!-- Mobile menu button -->
                 <div class="-mr-2 flex items-center sm:hidden">
                     <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
@@ -72,6 +106,31 @@
                 <a href="{{ route('reports.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Laporan</a>
                 <a href="{{ route('calculator.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Hitung Cepat 🧮</a>
             </div>
+            @auth
+            <div class="pt-4 pb-3 border-t border-slate-200">
+                <div class="flex items-center px-4 mb-3">
+                    <div class="flex-shrink-0">
+                        <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </div>
+                    <div class="ml-3">
+                        <div class="text-base font-medium text-slate-800">{{ Auth::user()->name }}</div>
+                        <div class="text-sm font-medium text-slate-500">{{ Auth::user()->email }}</div>
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <a href="{{ route('profile.edit') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Profil Saya</a>
+                    @if(auth()->user()->isAdmin())
+                    <a href="{{ route('users.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Kelola User</a>
+                    @endif
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="w-full text-left border-transparent text-red-600 hover:bg-red-50 hover:border-red-300 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+            @endauth
         </div>
     </nav>
 
@@ -116,8 +175,7 @@
     <footer class="bg-white border-t border-slate-200 mt-auto">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <p class="text-center text-sm text-slate-500 text-medium">
-                &copy; {{ date('Y') }} BOM System. All rights reserved.
-            </p>
+                &copy; {{ date('Y') }} Made by Ulso          </p>
         </div>
     </footer>
 
