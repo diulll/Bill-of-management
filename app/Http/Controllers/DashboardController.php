@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalculatorLog;
 use App\Models\Ingredient;
 use App\Models\Menu;
 use App\Models\Sale;
@@ -17,40 +18,18 @@ class DashboardController extends Controller
         $totalSales       = Sale::count();
         $totalPortions    = SaleItem::sum('quantity');
 
-        // Penjualan 7 hari terakhir
-        $recentSales = Sale::withCount('items')
-                           ->withSum('items', 'quantity')
-                           ->orderByDesc('sale_date')
-                           ->take(5)
-                           ->get();
-
-        // Top 5 menu terlaris
-        $topMenus = DB::table('sale_items as si')
-            ->join('menus as m', 'si.menu_id', '=', 'm.id')
-            ->select('m.name', DB::raw('SUM(si.quantity) as total_qty'))
-            ->groupBy('m.id', 'm.name')
-            ->orderByDesc('total_qty')
-            ->take(5)
-            ->get();
-
-        // Top 5 bahan paling banyak dipakai
-        $topIngredients = DB::table('sale_items as si')
-            ->join('menu_ingredients as mi', 'si.menu_id', '=', 'mi.menu_id')
-            ->join('ingredients as i', 'mi.ingredient_id', '=', 'i.id')
-            ->select('i.name', 'i.unit', DB::raw('SUM(si.quantity * mi.quantity) as total_used'))
-            ->groupBy('i.id', 'i.name', 'i.unit')
-            ->orderByDesc('total_used')
-            ->take(5)
-            ->get();
+        // Rekap Hitung Cepat (Calculator Logs)
+        $calculatorLogs = CalculatorLog::orderByDesc('log_date')
+            ->orderByDesc('created_at')
+            ->get()
+            ->groupBy(fn ($log) => $log->log_date->format('Y-m-d'));
 
         return view('dashboard', compact(
             'totalMenus',
             'totalIngredients',
             'totalSales',
             'totalPortions',
-            'recentSales',
-            'topMenus',
-            'topIngredients'
+            'calculatorLogs'
         ));
     }
 }
