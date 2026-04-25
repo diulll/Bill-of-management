@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CalculatorLog;
 use App\Models\Ingredient;
 use App\Models\Menu;
 use App\Models\Sale;
@@ -68,6 +69,12 @@ class ReportController extends Controller
         $totalPortions = SaleItem::whereHas('sale', fn($q) => $q->whereBetween('sale_date', [$dateFrom, $dateTo]))
                                   ->sum('quantity');
 
+        // Rekap Hitung Cepat (Calculator Logs)
+        $calculatorLogs = CalculatorLog::orderByDesc('log_date')
+            ->orderByDesc('created_at')
+            ->get()
+            ->groupBy(fn ($log) => $log->log_date->format('Y-m-d'));
+
         return view('reports.index', compact(
             'ingredientUsage',
             'breakdown',
@@ -75,7 +82,8 @@ class ReportController extends Controller
             'dateFrom',
             'dateTo',
             'totalSales',
-            'totalPortions'
+            'totalPortions',
+            'calculatorLogs'
         ));
     }
 }
