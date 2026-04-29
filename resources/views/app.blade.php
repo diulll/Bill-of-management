@@ -35,8 +35,8 @@
                         <a href="{{ route('dashboard') }}" class="border-transparent text-slate-500 hover:border-primary hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150 {{ request()->routeIs('dashboard') ? 'border-primary text-primary' : '' }}">
                             Dashboard
                         </a>
-                        <a href="{{ route('sales.index') }}" class="border-transparent text-slate-500 hover:border-primary hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150 {{ request()->routeIs('sales.*') ? 'border-primary text-primary' : '' }}">
-                            Penjualan
+                        <a href="{{ route('notes.index') }}" class="border-transparent text-slate-500 hover:border-primary hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150 {{ request()->routeIs('notes.*') ? 'border-primary text-primary' : '' }}">
+                            Catatan
                         </a>
                         <a href="{{ route('menus.index') }}" class="border-transparent text-slate-500 hover:border-primary hover:text-primary inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150 {{ request()->routeIs('menus.*') ? 'border-primary text-primary' : '' }}">
                             Menu & Resep
@@ -100,7 +100,7 @@
         <div class="sm:hidden hidden" id="mobile-menu">
             <div class="pt-2 pb-3 space-y-1">
                 <a href="{{ route('dashboard') }}" class="bg-indigo-50 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
-                <a href="{{ route('sales.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Penjualan</a>
+                <a href="{{ route('notes.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Catatan</a>
                 <a href="{{ route('menus.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Menu & Resep</a>
                 <a href="{{ route('ingredients.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Bahan Baku</a>
                 <a href="{{ route('reports.index') }}" class="border-transparent text-slate-500 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Laporan</a>
@@ -179,6 +179,7 @@
         </div>
     </footer>
 
+    @stack('modals')
     @stack('scripts')
 </body>
 </html>
