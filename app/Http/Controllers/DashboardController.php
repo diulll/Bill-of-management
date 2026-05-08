@@ -15,7 +15,7 @@ class DashboardController extends Controller
     {
         $totalMenus       = Menu::count();
         $totalIngredients = Ingredient::count();
-        $totalSales       = Sale::count();
+        $totalCalculatorLogs = CalculatorLog::count();
         $totalPortions    = SaleItem::sum('quantity');
 
         // Rekap Hitung Cepat (Calculator Logs)
@@ -27,7 +27,7 @@ class DashboardController extends Controller
         return view('dashboard', compact(
             'totalMenus',
             'totalIngredients',
-            'totalSales',
+            'totalCalculatorLogs',
             'totalPortions',
             'calculatorLogs'
         ));
