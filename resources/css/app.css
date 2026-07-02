@@ -1,3 +1,232 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ═══════════════════════════════════════════════════
+   AIRBNB DESIGN SYSTEM — CSS FOUNDATION
+   Based on design.md tokens
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+    body {
+        font-family: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+        color: #222222;
+        background-color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Remove default focus ring, use Airbnb-style 2px ink border on inputs */
+    input:focus, select:focus, textarea:focus {
+        --tw-ring-color: transparent;
+        border-color: #222222 !important;
+        border-width: 2px;
+        box-shadow: none !important;
+    }
+}
+
+@layer components {
+
+    /* ── Buttons ── */
+    .btn-primary {
+        @apply inline-flex items-center justify-center gap-2
+               bg-rausch text-white font-medium
+               rounded-airbnb-sm px-6 h-btn text-button-md
+               transition-all duration-150
+               hover:bg-rausch-active active:scale-[0.97]
+               focus:outline-none;
+    }
+
+    .btn-primary:disabled {
+        @apply bg-rausch-disabled cursor-not-allowed;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center gap-2
+               bg-canvas text-ink font-medium
+               border border-ink rounded-airbnb-sm px-6 h-btn text-button-md
+               transition-all duration-150
+               hover:bg-surface-soft active:scale-[0.97]
+               focus:outline-none;
+    }
+
+    .btn-tertiary {
+        @apply inline-flex items-center gap-1
+               bg-transparent text-ink font-medium text-button-md
+               transition-colors duration-150
+               hover:underline
+               focus:outline-none;
+    }
+
+    .btn-pill {
+        @apply inline-flex items-center justify-center gap-2
+               bg-rausch text-white font-medium
+               rounded-pill px-5 py-2.5 text-button-sm
+               transition-all duration-150
+               hover:bg-rausch-active active:scale-[0.97]
+               focus:outline-none;
+    }
+
+    .btn-sm {
+        @apply h-10 px-4 text-button-sm;
+    }
+
+    /* ── Cards ── */
+    .card {
+        @apply bg-canvas rounded-airbnb-md border border-hairline overflow-hidden;
+    }
+
+    .card-hover {
+        @apply transition-shadow duration-200 hover:shadow-airbnb;
+    }
+
+    .card-header {
+        @apply px-6 py-4 border-b border-hairline-soft bg-surface-soft;
+    }
+
+    .card-body {
+        @apply p-6;
+    }
+
+    /* ── Form Inputs (text-input component from design.md) ── */
+    .input-airbnb {
+        @apply w-full bg-canvas text-ink text-body-md
+               border border-hairline rounded-airbnb-sm
+               px-3 h-input
+               transition-all duration-150
+               placeholder:text-muted-soft;
+    }
+
+    .input-airbnb:focus {
+        border-color: #222222;
+        border-width: 2px;
+        box-shadow: none;
+        outline: none;
+    }
+
+    .select-airbnb {
+        @apply w-full bg-canvas text-ink text-body-md
+               border border-hairline rounded-airbnb-sm
+               px-3 py-3 appearance-none
+               transition-all duration-150;
+    }
+
+    .textarea-airbnb {
+        @apply w-full bg-canvas text-ink text-body-md
+               border border-hairline rounded-airbnb-sm
+               px-4 py-3 resize-none
+               transition-all duration-150
+               placeholder:text-muted-soft;
+    }
+
+    .label-airbnb {
+        @apply block text-caption text-ink mb-1.5;
+    }
+
+    /* ── Tables ── */
+    .table-airbnb {
+        @apply w-full text-left text-body-sm text-body;
+    }
+
+    .table-airbnb thead {
+        @apply bg-surface-soft text-micro-label uppercase text-muted border-b border-hairline;
+    }
+
+    .table-airbnb th {
+        @apply px-6 py-4 font-semibold tracking-wider;
+    }
+
+    .table-airbnb td {
+        @apply px-6 py-4;
+    }
+
+    .table-airbnb tbody tr {
+        @apply border-b border-hairline-soft hover:bg-surface-soft transition-colors;
+    }
+
+    /* ── Badges ── */
+    .badge-airbnb {
+        @apply inline-flex items-center px-2.5 py-0.5
+               rounded-pill text-badge font-semibold;
+    }
+
+    /* ── Top Nav ── */
+    .nav-airbnb {
+        @apply bg-canvas border-b border-hairline sticky top-0 z-50;
+        height: 80px;
+    }
+
+    .nav-link-airbnb {
+        @apply text-nav-link transition-colors duration-150;
+    }
+
+    .nav-link-active {
+        @apply text-ink border-b-2 border-ink;
+    }
+
+    .nav-link-inactive {
+        @apply text-muted hover:text-ink;
+    }
+
+    /* ── Section Heading ── */
+    .section-heading {
+        @apply text-display-sm text-ink;
+    }
+
+    .page-heading {
+        @apply text-display-xl text-ink;
+    }
+
+    /* ── Scrim (Modal Overlay) ── */
+    .scrim {
+        @apply fixed inset-0 bg-black/50;
+    }
+
+    /* ── Search Orb ── */
+    .search-orb {
+        @apply w-12 h-12 rounded-full bg-rausch text-white
+               flex items-center justify-center
+               transition-transform duration-150
+               hover:scale-105 active:scale-95;
+    }
+
+    /* ── Empty State ── */
+    .empty-state {
+        @apply flex flex-col items-center justify-center gap-3 py-12 text-center;
+    }
+
+    .empty-state-icon {
+        @apply text-5xl text-hairline;
+    }
+
+    .empty-state-title {
+        @apply text-title-md text-ink;
+    }
+
+    .empty-state-text {
+        @apply text-body-sm text-muted;
+    }
+
+    /* ── Alert / Flash Messages ── */
+    .alert-success {
+        @apply flex items-center gap-3 px-5 py-4
+               bg-green-50 border border-green-200 text-green-800
+               rounded-airbnb-sm text-body-sm font-medium;
+    }
+
+    .alert-error {
+        @apply flex items-center gap-3 px-5 py-4
+               bg-red-50 border border-red-200 text-error-text
+               rounded-airbnb-sm text-body-sm font-medium;
+    }
+
+    /* ── Stat Card ── */
+    .stat-card {
+        @apply card flex items-center p-5 gap-4
+               transition-shadow duration-200 hover:shadow-airbnb;
+    }
+
+    .stat-icon {
+        @apply w-12 h-12 rounded-airbnb-sm flex items-center justify-center text-2xl;
+    }
+}
