@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="mb-6">
-        <h2 class="text-2xl font-bold text-slate-800">Masuk ke Akun</h2>
-        <p class="text-sm text-slate-500 mt-1">masuk ke System BOM
+        <h2 class="text-display-lg text-ink">Masuk ke Akun</h2>
+        <p class="text-body-sm text-muted mt-1">masuk ke System BOM
     </div>
 
     <!-- Session Status -->
@@ -12,18 +12,18 @@
 
         <!-- Email Address -->
         <div>
-            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <label for="email" class="label-airbnb">Email</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="nama@email.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <label for="password" class="label-airbnb">Password</label>
             <input id="password" type="password" name="password" required autocomplete="current-password"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="••••••••" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -32,12 +32,12 @@
         <div class="flex items-center justify-between mt-4">
             <label for="remember_me" class="inline-flex items-center cursor-pointer">
                 <input id="remember_me" type="checkbox" name="remember"
-                    class="w-4 h-4 rounded border-slate-300 text-indigo-600 shadow-sm focus:ring-indigo-500 focus:ring-offset-0 transition">
-                <span class="ms-2 text-sm text-slate-600">Ingat Saya</span>
+                    class="w-4 h-4 rounded border-hairline text-rausch shadow-sm focus:ring-rausch focus:ring-offset-0 transition">
+                <span class="ms-2 text-body-sm text-body">Ingat Saya</span>
             </label>
 
             @if (Route::has('password.request'))
-                <a class="text-sm text-indigo-600 hover:text-indigo-800 font-medium transition" href="{{ route('password.request') }}">
+                <a class="text-body-sm text-rausch hover:text-rausch-active font-medium transition" href="{{ route('password.request') }}">
                     Lupa Password?
                 </a>
             @endif
@@ -45,8 +45,7 @@
 
         <!-- Submit -->
         <div class="mt-6">
-            <button type="submit"
-                class="w-full flex justify-center items-center gap-2 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm hover:shadow transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button type="submit" class="btn-primary w-full">
                 <i class="mdi mdi-login text-lg"></i>
                 Masuk
             </button>
@@ -54,9 +53,9 @@
 
         <!-- Register Link -->
         <div class="mt-6 text-center">
-            <p class="text-sm text-slate-500">
+            <p class="text-body-sm text-muted">
                 Belum punya akun?
-                <a href="{{ route('register') }}" class="text-indigo-600 hover:text-indigo-800 font-semibold transition">
+                <a href="{{ route('register') }}" class="text-rausch hover:text-rausch-active font-semibold transition">
                     Daftar Sekarang
                 </a>
             </p>
