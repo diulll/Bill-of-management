@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="mb-6">
-        <h2 class="text-2xl font-bold text-slate-800">Buat Akun Baru</h2>
-        <p class="text-sm text-slate-500 mt-1">Daftar untuk mulai menggunakan BOM System</p>
+        <h2 class="text-display-lg text-ink">Buat Akun Baru</h2>
+        <p class="text-body-sm text-muted mt-1">Daftar untuk mulai menggunakan BOM System</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}">
@@ -9,44 +9,43 @@
 
         <!-- Name -->
         <div>
-            <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
+            <label for="name" class="label-airbnb">Nama Lengkap</label>
             <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="Masukkan nama Anda" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
-            <label for="email" class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <label for="email" class="label-airbnb">Email</label>
             <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="nama@email.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <label for="password" class="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <label for="password" class="label-airbnb">Password</label>
             <input id="password" type="password" name="password" required autocomplete="new-password"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="Minimal 8 karakter" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <label for="password_confirmation" class="block text-sm font-medium text-slate-700 mb-1">Konfirmasi Password</label>
+            <label for="password_confirmation" class="label-airbnb">Konfirmasi Password</label>
             <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password"
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500 transition"
+                class="input-airbnb"
                 placeholder="Ulangi password Anda" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <!-- Submit -->
         <div class="mt-6">
-            <button type="submit"
-                class="w-full flex justify-center items-center gap-2 py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg shadow-sm hover:shadow transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+            <button type="submit" class="btn-primary w-full">
                 <i class="mdi mdi-account-plus text-lg"></i>
                 Daftar
             </button>
@@ -54,9 +53,9 @@
 
         <!-- Login Link -->
         <div class="mt-6 text-center">
-            <p class="text-sm text-slate-500">
+            <p class="text-body-sm text-muted">
                 Sudah punya akun?
-                <a href="{{ route('login') }}" class="text-indigo-600 hover:text-indigo-800 font-semibold transition">
+                <a href="{{ route('login') }}" class="text-rausch hover:text-rausch-active font-semibold transition">
                     Masuk di sini
                 </a>
             </p>
