@@ -2,44 +2,44 @@
 
 @section('content')
 <div class="mb-6">
-    <h1 class="text-2xl font-bold text-slate-800">Kalkulator</h1>
+    <h1 class="page-heading">Kalkulator</h1>
 </div>
 
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
     
     <!-- Bagian Kiri: Input Menu -->
-    <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
-            <h2 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
-                <i class="mdi mdi-plus-circle text-xl text-primary"></i>
+    <div class="card">
+        <div class="card-header flex items-center justify-between">
+            <h2 class="text-display-sm text-ink flex items-center gap-2">
+                <i class="mdi mdi-plus-circle text-xl text-rausch"></i>
                 Daftar Menu Tersedia
             </h2>
-            <button type="button" onclick="resetCalculator()" class="text-sm font-medium text-slate-500 hover:text-red-500 transition">Reset Ulang</button>
+            <button type="button" onclick="resetCalculator()" class="text-body-sm font-medium text-muted hover:text-rausch transition">Reset Ulang</button>
         </div>
         
-        <div class="p-4 bg-slate-50 border-b border-slate-200">
-             <input type="text" id="searchInput" placeholder="Cari nama menu..." class="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none transition bg-white" onkeyup="filterMenus()">
+        <div class="p-4 bg-surface-soft border-b border-hairline-soft">
+             <input type="text" id="searchInput" placeholder="Cari nama menu..." class="input-airbnb h-10 text-body-sm" onkeyup="filterMenus()">
         </div>
 
-        <div class="divide-y divide-slate-100 max-h-[500px] overflow-y-auto" id="menuList">
+        <div class="divide-y divide-hairline-soft max-h-[500px] overflow-y-auto" id="menuList">
             @forelse($menus as $menu)
-            <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-slate-50 transition menu-item" data-name="{{ strtolower($menu->name) }}">
+            <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between hover:bg-surface-soft transition menu-item" data-name="{{ strtolower($menu->name) }}">
                 <div class="mb-2 sm:mb-0">
-                    <h3 class="font-medium text-slate-800">{{ $menu->name }}</h3>
-                    <p class="text-xs text-slate-500 capitalize">{{ $menu->category }} &bull; {{ $menu->ingredients->count() }} Bahan Baku</p>
+                    <h3 class="text-title-md text-ink">{{ $menu->name }}</h3>
+                    <p class="text-caption-sm text-muted capitalize">{{ $menu->category }} &bull; {{ $menu->ingredients->count() }} Bahan Baku</p>
                 </div>
                 <div class="flex items-center gap-2 self-start sm:self-auto">
-                    <button type="button" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-red-100 hover:text-red-600 transition" onclick="changeQty({{ $menu->id }}, -1)">
+                    <button type="button" class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-strong text-ink hover:bg-rausch-light hover:text-rausch transition" onclick="changeQty({{ $menu->id }}, -1)">
                         <i class="mdi mdi-minus text-lg"></i>
                     </button>
-                    <input type="number" id="qty_{{ $menu->id }}" value="0" min="0" class="w-16 text-center rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm py-1 border outline-none" onchange="validateQty(this); calculateIngredients()">
-                    <button type="button" class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-green-100 hover:text-green-600 transition" onclick="changeQty({{ $menu->id }}, 1)">
+                    <input type="number" id="qty_{{ $menu->id }}" value="0" min="0" class="w-16 text-center rounded-airbnb-sm border-hairline text-body-sm py-1.5 border outline-none focus:border-ink focus:border-2" onchange="validateQty(this); calculateIngredients()">
+                    <button type="button" class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-strong text-ink hover:bg-green-50 hover:text-green-600 transition" onclick="changeQty({{ $menu->id }}, 1)">
                         <i class="mdi mdi-plus text-lg"></i>
                     </button>
                 </div>
             </div>
             @empty
-            <div class="p-8 text-center text-slate-500">
+            <div class="p-8 text-center text-muted text-body-sm">
                 Belum ada menu yang aktif.
             </div>
             @endforelse
@@ -47,34 +47,34 @@
     </div>
 
     <!-- Bagian Kanan: Hasil Kalkulasi -->
-    <div id="resultPanel" class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden text-slate-800 relative h-fit sticky top-[70px] lg:top-24 z-10 flex flex-col max-h-[40vh] lg:max-h-none">
+    <div id="resultPanel" class="card shadow-airbnb relative h-fit sticky top-[84px] lg:top-24 z-10 flex flex-col max-h-[40vh] lg:max-h-none">
         <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-             <i class="mdi mdi-chart-bar text-9xl text-slate-400"></i>
+             <i class="mdi mdi-chart-bar text-9xl text-muted"></i>
         </div>
-        <div class="px-6 py-5 border-b border-slate-200 bg-slate-50/80 backdrop-blur-sm relative z-10 w-full flex justify-between items-center">
+        <div class="card-header relative z-10 w-full flex justify-between items-center">
             <div>
-                <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                    <i class="mdi mdi-flash text-xl text-primary"></i>
+                <h2 class="text-display-sm text-ink flex items-center gap-2">
+                    <i class="mdi mdi-flash text-xl text-rausch"></i>
                     Bahan Yang Terpakai
                 </h2>
-                <div id="statusQty" class="text-xs text-slate-500 mt-1">Total pesanan: 0</div>
+                <div id="statusQty" class="text-caption-sm text-muted mt-1">Total pesanan: 0</div>
             </div>
             <div class="flex gap-2">
-                <button type="button" onclick="openSaveModal()" id="saveBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5 rounded transition hidden flex items-center gap-1" title="Simpan Rekap">
+                <button type="button" onclick="openSaveModal()" id="saveBtn" class="btn-primary btn-sm hidden text-body-sm px-3 py-1.5" title="Simpan Rekap">
                     <i class="mdi mdi-content-save text-sm"></i>
                     Simpan
                 </button>
-                <button type="button" onclick="copyToClipboard()" id="copyBtn" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5 rounded transition hidden flex items-center gap-1" title="Salin text">
+                <button type="button" onclick="copyToClipboard()" id="copyBtn" class="btn-secondary btn-sm hidden text-body-sm px-3 py-1.5" title="Salin text">
                     <i class="mdi mdi-content-copy text-sm"></i>
                     Salin Rekap
                 </button>
             </div>
         </div>
         
-        <div class="p-6 relative z-10 overflow-y-auto">
-            <div id="emptyState" class="bg-white p-6 rounded border border-slate-200 text-center flex flex-col items-center gap-3">
-                 <i class="mdi mdi-cursor-default-click text-4xl text-slate-400"></i>
-                 <p class="text-sm text-slate-500">Mulai atur quantity pada daftar menu di samping untuk melihat hasil kalkulasi secara <em>real-time</em>.</p>
+        <div class="card-body relative z-10 overflow-y-auto">
+            <div id="emptyState" class="card p-6 text-center flex flex-col items-center gap-3">
+                 <i class="mdi mdi-cursor-default-click text-4xl text-hairline"></i>
+                 <p class="text-body-sm text-muted">Mulai atur quantity pada daftar menu di samping untuk melihat hasil kalkulasi secara <em>real-time</em>.</p>
             </div>
 
             <div id="resultContainer" class="space-y-4 hidden">
@@ -88,26 +88,26 @@
 @push('modals')
 <!-- Modal Simpan Rekap -->
 <div id="saveModal" class="fixed inset-0 z-[9999] hidden" style="position:fixed;">
-    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="closeSaveModal()"></div>
+    <div class="scrim" onclick="closeSaveModal()"></div>
     <div class="absolute inset-0 flex items-center justify-center p-4">
-        <div class="bg-white rounded-xl shadow-2xl border border-slate-200 w-full max-w-md relative">
-            <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 rounded-t-xl">
-                <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                    <i class="mdi mdi-content-save text-xl text-emerald-500"></i>
+        <div class="bg-canvas rounded-airbnb-md shadow-airbnb-lg border border-hairline w-full max-w-md relative">
+            <div class="card-header rounded-t-airbnb-md">
+                <h3 class="text-display-sm text-ink flex items-center gap-2">
+                    <i class="mdi mdi-content-save text-xl text-rausch"></i>
                     Simpan Rekap Kalkulasi
                 </h3>
-                <p class="text-xs text-slate-500 mt-1">Rekap ini akan tersimpan di halaman Laporan Kalkulator.</p>
+                <p class="text-caption-sm text-muted mt-1">Rekap ini akan tersimpan di halaman Laporan Kalkulator.</p>
             </div>
             <form action="{{ route('calculator-logs.store') }}" method="POST" id="saveForm">
                 @csrf
-                <div class="p-6 space-y-4">
+                <div class="card-body space-y-4">
                     <div>
-                        <label for="save_name" class="block text-sm font-medium text-slate-700 mb-1">Nama Operator</label>
-                        <input type="text" name="name" id="save_name" required placeholder="Masukkan nama..." class="w-full rounded-lg border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2.5 border outline-none transition">
+                        <label for="save_name" class="label-airbnb">Nama Operator</label>
+                        <input type="text" name="name" id="save_name" required placeholder="Masukkan nama..." class="input-airbnb">
                     </div>
                     <div>
-                        <label for="save_shift" class="block text-sm font-medium text-slate-700 mb-1">Shift</label>
-                        <select name="shift" id="save_shift" required class="w-full rounded-lg border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2.5 border outline-none transition">
+                        <label for="save_shift" class="label-airbnb">Shift</label>
+                        <select name="shift" id="save_shift" required class="select-airbnb">
                             <option value="">-- Pilih Shift --</option>
                             <option value="Shift 1">Shift 1</option>
                             <option value="Shift 2">Shift 2</option>
@@ -119,9 +119,9 @@
                     <input type="hidden" name="menus_data" id="save_menus_data">
                     <input type="hidden" name="ingredients_data" id="save_ingredients_data">
                 </div>
-                <div class="px-6 py-4 border-t border-slate-200 bg-slate-50 rounded-b-xl flex justify-end gap-3">
-                    <button type="button" onclick="closeSaveModal()" class="px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition">Batal</button>
-                    <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 transition flex items-center gap-1.5">
+                <div class="px-6 py-4 border-t border-hairline bg-surface-soft rounded-b-airbnb-md flex justify-end gap-3">
+                    <button type="button" onclick="closeSaveModal()" class="btn-secondary btn-sm">Batal</button>
+                    <button type="submit" class="btn-primary btn-sm">
                         <i class="mdi mdi-check text-lg"></i>
                         Simpan Sekarang
                     </button>
@@ -202,11 +202,11 @@
             html += `
                 <div>
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-medium text-slate-800"><span class="text-orange-500 font-bold text-lg">•</span> ${name}</span>
-                        <span class="text-lg font-bold text-orange-500 font-mono result-amount">${data.amount.toLocaleString('id-ID', {maximumFractionDigits: 2})} <span class="text-xs text-slate-500 font-sans ml-0.5 result-unit">${data.unit}</span></span>
+                        <span class="font-medium text-ink"><span class="text-rausch font-bold text-lg">•</span> ${name}</span>
+                        <span class="text-lg font-bold text-rausch font-mono result-amount">${data.amount.toLocaleString('id-ID', {maximumFractionDigits: 2})} <span class="text-caption-sm text-muted font-sans ml-0.5 result-unit">${data.unit}</span></span>
                     </div>
-                    <div class="w-full bg-slate-100 rounded-full h-1">
-                        <div class="bg-gradient-to-r from-orange-400 to-orange-500 h-1 rounded-full" style="width: 100%"></div>
+                    <div class="w-full bg-surface-strong rounded-pill h-1">
+                        <div class="bg-rausch h-1 rounded-pill" style="width: 100%"></div>
                     </div>
                 </div>
             `;
@@ -272,7 +272,7 @@
         // Catat Hasil Ingredients
         const resultItems = document.querySelectorAll('#resultContainer > div');
         resultItems.forEach(div => {
-            const name = div.querySelector('span.text-slate-800').innerText.replace('• ', '');
+            const name = div.querySelector('span.text-ink').innerText.replace('• ', '');
             const amount = div.querySelector('.result-amount').childNodes[0].nodeValue.trim();
             const unit = div.querySelector('.result-unit').innerText;
             lines.push(`- ${name}: ${amount} ${unit}`);
@@ -305,7 +305,7 @@
 
         const resultItems = document.querySelectorAll('#resultContainer > div');
         resultItems.forEach(div => {
-            const name = div.querySelector('span.text-slate-800').innerText.replace('• ', '');
+            const name = div.querySelector('span.text-ink').innerText.replace('• ', '');
             const amount = div.querySelector('.result-amount').childNodes[0].nodeValue.trim();
             const unit = div.querySelector('.result-unit').innerText;
             ingredientsData.push({ name, amount, unit });
