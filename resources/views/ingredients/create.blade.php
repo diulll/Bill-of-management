@@ -2,58 +2,58 @@
 
 @section('content')
 <div class="mb-6">
-    <a href="{{ route('ingredients.index') }}" class="text-sm font-medium text-slate-500 hover:text-slate-700 flex items-center gap-1 w-fit transition">
+    <a href="{{ route('ingredients.index') }}" class="btn-tertiary text-body-sm text-muted hover:text-ink">
         <i class="mdi mdi-arrow-left text-lg"></i>
         Kembali ke Daftar Bahan Baku
     </a>
 </div>
 
-<div class="max-w-2xl bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-    <div class="px-6 py-4 border-b border-slate-200 bg-slate-50">
-        <h2 class="text-lg font-semibold text-slate-800">Tambah Bahan Baku Baru</h2>
+<div class="max-w-2xl card">
+    <div class="card-header">
+        <h2 class="text-display-sm text-ink">Tambah Bahan Baku Baru</h2>
     </div>
 
-    <form action="{{ route('ingredients.store') }}" method="POST" class="p-6">
+    <form action="{{ route('ingredients.store') }}" method="POST" class="card-body">
         @csrf
 
         <div class="space-y-6">
             <div>
-                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama Bahan Baku <span class="text-red-500">*</span></label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none transition" required placeholder="Contoh: Susu Kental Manis (SKM), UHT, Es Batu, dll">
+                <label for="name" class="label-airbnb">Nama Bahan Baku <span class="text-rausch">*</span></label>
+                <input type="text" name="name" id="name" value="{{ old('name') }}" class="input-airbnb" required placeholder="Contoh: Susu Kental Manis (SKM), UHT, Es Batu, dll">
                 @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1.5 text-body-sm text-error-text">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
-                <label for="unit" class="block text-sm font-medium text-slate-700 mb-1">Satuan Dasar <span class="text-red-500">*</span></label>
+                <label for="unit" class="label-airbnb">Satuan Dasar <span class="text-rausch">*</span></label>
                 <div class="relative">
-                    <select name="unit" id="unit" class="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none appearance-none transition bg-white" required>
+                    <select name="unit" id="unit" class="select-airbnb" required>
                         <option value="" disabled selected>Pilih Satuan...</option>
                         <option value="gram" {{ old('unit') == 'gram' ? 'selected' : '' }}>Gram (g) — untuk benda padat/bubuk</option>
                         <option value="ml" {{ old('unit') == 'ml' ? 'selected' : '' }}>Mililiter (ml) — untuk benda cair</option>
                         <option value="pcs" {{ old('unit') == 'pcs' ? 'selected' : '' }}>Pieces (pcs) — satuan utuh</option>
                         <option value="slice" {{ old('unit') == 'slice' ? 'selected' : '' }}>Lbr</option>
                     </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted">
                         <i class="mdi mdi-chevron-down"></i>
                     </div>
                 </div>
-                <p class="mt-2 text-sm text-slate-500 flex items-start gap-1.5">
-                    <i class="mdi mdi-information-outline text-lg mt-0.5 flex-shrink-0 text-slate-400"></i>
+                <p class="mt-2 text-body-sm text-muted flex items-start gap-1.5">
+                    <i class="mdi mdi-information-outline text-lg mt-0.5 flex-shrink-0 text-hairline"></i>
                     <span><strong>Tips:</strong> Gunakan satuan paling kecil agar perhitungan resep lebih fleksibel (contoh: gunakan 'gram' bukan 'kg').</span>
                 </p>
                 @error('unit')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1.5 text-body-sm text-error-text">{{ $message }}</p>
                 @enderror
             </div>
         </div>
 
-        <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-slate-100">
-            <a href="{{ route('ingredients.index') }}" class="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
+        <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-hairline-soft">
+            <a href="{{ route('ingredients.index') }}" class="btn-secondary btn-sm">
                 Batal
             </a>
-            <button type="submit" class="inline-flex justify-center rounded-lg border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition">
+            <button type="submit" class="btn-primary btn-sm">
                 Simpan Bahan Baku
             </button>
         </div>
