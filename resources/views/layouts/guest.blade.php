@@ -11,16 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
 </head>
-<body class="text-slate-800 antialiased">
+<body class="antialiased">
     <div class="flex flex-col lg:flex-row lg:min-h-screen">
-        <!-- Top/Left Side: Decorative Panel -->
-        <div class="min-h-screen lg:min-h-0 lg:w-1/2 relative overflow-hidden flex" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <!-- Left Side: Decorative Panel (Rausch gradient) -->
+        <div class="min-h-screen lg:min-h-0 lg:w-1/2 relative overflow-hidden flex" style="background: linear-gradient(135deg, #ff385c 0%, #e00b41 60%, #bd1e59 100%);">
             <div class="absolute inset-0 opacity-10">
                 <svg class="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -35,22 +30,22 @@
                 <div class="mb-3">
                     <img src="{{ asset('images/Calculator-pana.png') }}" alt="Calculator Illustration" class="object-contain drop-shadow-lg" style="width: 14rem; height: 14rem;">
                 </div>
-                <h1 class="text-3xl font-bold mb-2 text-center">BOM System</h1>
-                <p class="text-sm text-white/80 text-center max-w-sm leading-relaxed">
+                <h1 class="text-display-xl text-white text-center">BOM System</h1>
+                <p class="text-body-sm text-white/80 text-center max-w-sm leading-relaxed mt-2">
                     Kelola Bill of Materials, resep, dan kalkulasi bahan baku Anda dengan mudah dan efisien.
                 </p>
-                <div class="mt-6 grid grid-cols-3 gap-8 text-center">
+                <div class="mt-8 grid grid-cols-3 gap-8 text-center">
                     <div>
                         <i class="mdi mdi-chart-bar text-2xl text-white/90"></i>
-                        <div class="text-xs text-white/60 mt-1">Laporan</div>
+                        <div class="text-caption-sm text-white/60 mt-1">Laporan</div>
                     </div>
                     <div>
                         <i class="mdi mdi-calculator-variant text-2xl text-white/90"></i>
-                        <div class="text-xs text-white/60 mt-1">Kalkulasi</div>
+                        <div class="text-caption-sm text-white/60 mt-1">Kalkulasi</div>
                     </div>
                     <div>
                         <i class="mdi mdi-package-variant-closed text-2xl text-white/90"></i>
-                        <div class="text-xs text-white/60 mt-1">Inventori</div>
+                        <div class="text-caption-sm text-white/60 mt-1">Inventori</div>
                     </div>
                 </div>
                 <!-- Scroll indicator (mobile only) -->
@@ -64,14 +59,14 @@
             <div class="absolute top-1/3 right-10 w-24 h-24 bg-white/5 rounded-full"></div>
         </div>
 
-        <!-- Bottom/Right Side: Form -->
-        <div class="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 sm:px-12 py-12 lg:py-0 bg-slate-50 min-h-screen lg:min-h-0">
+        <!-- Right Side: Form -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 sm:px-12 py-12 lg:py-0 bg-canvas min-h-screen lg:min-h-0">
             <div class="w-full max-w-md">
-                <div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 p-8 sm:p-10 border border-slate-100">
+                <div class="card shadow-airbnb p-8 sm:p-10">
                     {{ $slot }}
                 </div>
 
-                <p class="text-center text-sm text-slate-400 mt-8">
+                <p class="text-center text-caption-sm text-muted mt-8">
                     &copy; {{ date('Y') }} make it easy.
                 </p>
             </div>
