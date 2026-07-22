@@ -2,69 +2,69 @@
 
 @section('content')
 <div class="mb-6">
-    <a href="{{ route('menus.index') }}" class="text-sm font-medium text-slate-500 hover:text-slate-700 flex items-center gap-1 w-fit transition">
+    <a href="{{ route('menus.index') }}" class="btn-tertiary text-body-sm text-muted hover:text-ink">
         <i class="mdi mdi-arrow-left text-lg"></i>
         Kembali ke Daftar Menu
     </a>
 </div>
 
-<div class="max-w-2xl bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-    <div class="px-6 py-4 border-b border-slate-200 bg-slate-50">
-        <h2 class="text-lg font-semibold text-slate-800">Tambah Menu Baru</h2>
+<div class="max-w-2xl card">
+    <div class="card-header">
+        <h2 class="text-display-sm text-ink">Tambah Menu Baru</h2>
     </div>
 
-    <form action="{{ route('menus.store') }}" method="POST" class="p-6">
+    <form action="{{ route('menus.store') }}" method="POST" class="card-body">
         @csrf
 
         <div class="space-y-6">
             <div>
-                <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Nama Menu <span class="text-red-500">*</span></label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" class="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none transition" required placeholder="Contoh: Butterscotch Latte">
+                <label for="name" class="label-airbnb">Nama Menu <span class="text-rausch">*</span></label>
+                <input type="text" name="name" id="name" value="{{ old('name') }}" class="input-airbnb" required placeholder="Contoh: Butterscotch Latte">
                 @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                    <p class="mt-1.5 text-body-sm text-error-text">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                    <label for="category" class="block text-sm font-medium text-slate-700 mb-1">Kategori <span class="text-red-500">*</span></label>
+                    <label for="category" class="label-airbnb">Kategori <span class="text-rausch">*</span></label>
                     <div class="relative">
-                        <select name="category" id="category" class="w-full rounded-md border-slate-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none appearance-none transition bg-white" required>
+                        <select name="category" id="category" class="select-airbnb" required>
                             <option value="minuman" {{ old('category') == 'minuman' ? 'selected' : '' }}>Minuman</option>
                             <option value="makanan" {{ old('category') == 'makanan' ? 'selected' : '' }}>Makanan</option>
                         </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-muted">
                             <i class="mdi mdi-chevron-down"></i>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <label for="price" class="block text-sm font-medium text-slate-700 mb-1">Harga Jual (Opsional)</label>
+                    <label for="price" class="label-airbnb">Harga Jual (Opsional)</label>
                     <div class="relative">
                         <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                            <span class="text-slate-500 sm:text-sm">Rp</span>
+                            <span class="text-muted text-body-sm">Rp</span>
                         </div>
-                        <input type="number" name="price" id="price" value="{{ old('price') }}" min="0" step="100" class="w-full rounded-md border-slate-300 pl-10 shadow-sm focus:border-primary focus:ring-primary sm:text-sm px-4 py-2 border outline-none transition" placeholder="0">
+                        <input type="number" name="price" id="price" value="{{ old('price') }}" min="0" step="100" class="input-airbnb pl-10" placeholder="0">
                     </div>
                 </div>
             </div>
 
             <div class="pt-2">
                 <div class="flex items-center">
-                    <input id="is_active" name="is_active" type="checkbox" value="1" {{ old('is_active', true) ? 'checked' : '' }} class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary">
-                    <label for="is_active" class="ml-2 block text-sm text-slate-700 cursor-pointer">
+                    <input id="is_active" name="is_active" type="checkbox" value="1" {{ old('is_active', true) ? 'checked' : '' }} class="h-4 w-4 rounded border-hairline text-rausch focus:ring-rausch">
+                    <label for="is_active" class="ml-2 block text-body-sm text-body cursor-pointer">
                         Menu aktif (Tersedia untuk dijual)
                     </label>
                 </div>
             </div>
         </div>
 
-        <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-slate-100">
-            <a href="{{ route('menus.index') }}" class="inline-flex justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
+        <div class="mt-8 flex justify-end gap-3 pt-6 border-t border-hairline-soft">
+            <a href="{{ route('menus.index') }}" class="btn-secondary btn-sm">
                 Batal
             </a>
-            <button type="submit" class="inline-flex justify-center rounded-lg border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 transition">
+            <button type="submit" class="btn-primary btn-sm">
                 Simpan & Lanjut Setup Resep
             </button>
         </div>
